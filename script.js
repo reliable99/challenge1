@@ -24,30 +24,49 @@ function isValidEmail(email) {
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLocaleLowerCase());
 }
+
+ // check required fields
+
+ function checkRequired (inputArr) {
+    inputArr.forEach(function(input){
+        if (input.value.trim() === '') {
+            showError(input, `${getFieldName(input)} is required`)
+        }else{
+            showSuccess(input)
+        }
+    })
+ }
+
+ // Get field name
+ function getFieldName (input) {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1)
+ }
 // event listners
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  if (username.value === "") {
-    showError(username, "Username is required");
-  } else {
-    showSuccess(username);
-  }
-  if (email.value === "") {
-    showError(email, "Email  is required");
-  } else if (!isValidEmail(email.value)) {
-    showError(email, "Email is not valid");
-  } else {
-    showSuccess(email);
-  }
-  if (password.value === "") {
-    showError(password, "Password  is required");
-  } else {
-    showSuccess(password);
-  }
-  if (password2.value === "") {
-    showError(password2, "Password  is required");
-  } else {
-    showSuccess(password2);
-  }
+checkRequired([username, email, password, password2])
+ 
+//   if (username.value === "") {
+//     showError(username, "Username is required");
+//   } else {
+//     showSuccess(username);
+//   }
+//   if (email.value === "") {
+//     showError(email, "Email  is required");
+//   } else if (!isValidEmail(email.value)) {
+//     showError(email, "Email is not valid");
+//   } else {
+//     showSuccess(email);
+//   }
+//   if (password.value === "") {
+//     showError(password, "Password  is required");
+//   } else {
+//     showSuccess(password);
+//   }
+//   if (password2.value === "") {
+//     showError(password2, "Password  is required");
+//   } else {
+//     showSuccess(password2);
+//   }
 });
