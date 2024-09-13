@@ -52,8 +52,9 @@ h2{
     border-radius: 4px;
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     font-size: 14px;
+    margin-bottom: 10px;
 }
 .form-control input:focus{
     outline: 0;
@@ -66,6 +67,7 @@ h2{
 }
 .form-control.error input{
     border-color: var(--error-color);
+    
 }
 
 .form-control small{
@@ -74,6 +76,7 @@ h2{
     bottom: 0;
     left: 0;
     visibility: hidden;
+    
 }
 
 .form-control.error small{
